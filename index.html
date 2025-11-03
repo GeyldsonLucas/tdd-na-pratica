@@ -16,25 +16,48 @@
 
     <script>
        
-      const cedulasDisponiveis = [100, 50, 20, 10, 5, 2, 1]
+      const cedulasDisponiveis = [100, 50, 20, 10, 5, 2, 1];
+      function calcularTroco(preco, pago) {
+        let restante = pago - preco;
+        const troco = [];
+        
+        for (let i = 0; i < cedulasDisponiveis.length; i++) {
+        const cedula = cedulasDisponiveis[i];
+        const quantidade = Math.floor(restante / cedula);
 
-      function calcularTroco(precoDoProtudo, ValorPago){
-        let troco = []
-        return troco
-
+        for (let j = 0; j < quantidade; j++) {
+        troco.push(cedula);
       }
+
+    restante -= cedula * quantidade;
+  }
+
+  return troco;
+}
     </script>
 
     <script>
      
 
       // 1 - Fazer teste que não passará, de propósito(RED)
-      test('calcularTroco(1,1) deve retornar [](Array vazio)', (assert) => {
-        const trocoCalulado = calcularTroco(1,1)
+            test('calcularTroco(1,1) deve retornar [] - Um array vazio', (assert) => {
+        const trocoCalculado = calcularTroco(1, 1) // Sem troco, apenas um array vazio
         const trocoEsperado = []
-        assert.deepEqual(trocoCalulado, trocoEsperado) //deepEqual compara arrays
-      }
-    )
+        assert.deepEqual(trocoCalculado, trocoEsperado)
+      })
+
+      test('calcularTroco(215, 300) deve retornar [50,20,10,5]', (assert) => {
+        const trocoCalculado = calcularTroco(215, 300)
+        const trocoEsperado = [50, 20, 10, 5]
+        assert.deepEqual(trocoCalculado, trocoEsperado)
+      })
+
+      test('calcularTroco(486, 600) deve retornar [100,10,2,2]', (assert) => {
+        const trocoCalculado = calcularTroco(486, 600)
+        const trocoEsperado = [100, 10, 2, 2]
+        assert.deepEqual(trocoCalculado, trocoEsperado)
+      })
+    
     </script>
 
   </body>
