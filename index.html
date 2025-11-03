@@ -19,6 +19,8 @@
     </script>
 
     <script>
+      //----------------------Testes--------------------------------------------------
+
       // Isso é o que um pequeno teste unitário parece:
       test('Esse teste de exemplo deve passar sempre', (assert) => {
         const resultado = 1 + 1
@@ -29,6 +31,23 @@
         const resultado = [1,2,3].indexOf(1)  // O valor de 'resultado' será 0 (zero)
         assert.equal(resultado, -1) // Nós esperamos que essa validação falhe
       })
+
+      // 1 - Fazer teste que não passará, de propósito(RED)
+      test('calcularTroco(1,1) deve retornar [](Array vazio)', (assert) => {
+        const trocoCalulado = calcularTroco(1,1)
+        const trocoEsperado = []
+        assert.deepEqual(trocoCalulado, trocoEsperado) //deepEqual compara arrays
+      }
+    
+    
+    )
+
+      //------------------------Código--------------------------------------------------
+      const cedulasDisponiveis = [100, 50, 20, 10, 5, 2, 1]
+
+
+
+
     </script>
 
   </body>
